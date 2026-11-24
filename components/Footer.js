@@ -28,7 +28,6 @@ function ContactLink({ href, children, type = 'phone' }) {
   const style = type === 'phone' ? 'bg-emerald-500/10 text-emerald-500' : type === 'email' ? 'bg-[#8356fb]/10 text-[#8356fb]' : 'bg-[#8356fb]/10 text-[#8356fb]';
   return <a href={href} className="group flex items-center gap-3 transition-colors duration-300 hover:text-textHeading"><span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ring-1 ring-inset ring-white/5 transition duration-300 group-hover:scale-105 ${style}`}><ContactIcon type={type} /></span><span>{children}</span></a>;
 }
-
 export default function Footer() {
   return (
     <footer className="relative mt-20 overflow-hidden border-t border-border bg-white text-[#212121] dark:bg-[#0b0b0d] dark:text-white lg:bg-white lg:text-textHeading dark:lg:bg-[#0b0b0d] dark:lg:text-textHeading">
