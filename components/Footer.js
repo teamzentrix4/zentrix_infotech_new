@@ -24,8 +24,6 @@ function SocialIcon({ type }) {
   return <svg {...common}><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 123.8 90.7 226.4 209.3 245V327.7h-63V256h63v-54.6c0-62.2 37-96.5 93.7-96.5 27.1 0 55.5 4.8 55.5 4.8v61h-31.3c-30.8 0-40.4 19.1-40.4 38.7V256h68.8l-11 71.7h-57.8V501C421.3 482.4 512 379.8 512 256z" /></svg>;
 }
 
-
-
 function ContactLink({ href, children, type = 'phone' }) {
   const style = type === 'phone' ? 'bg-emerald-500/10 text-emerald-500' : type === 'email' ? 'bg-[#8356fb]/10 text-[#8356fb]' : 'bg-[#8356fb]/10 text-[#8356fb]';
   return <a href={href} className="group flex items-center gap-3 transition-colors duration-300 hover:text-textHeading"><span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ring-1 ring-inset ring-white/5 transition duration-300 group-hover:scale-105 ${style}`}><ContactIcon type={type} /></span><span>{children}</span></a>;
