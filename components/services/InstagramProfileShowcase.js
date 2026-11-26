@@ -16,7 +16,7 @@ const INSTAGRAM_PROFILES = [
     postCount: '795',
     reach: '249K',
     href: 'https://www.instagram.com/oracleeyehospital?fqnt=MXA0NXNtMTIwdmxvNg==',
-    posts: ['#f6b51e', '#f7e3b9', '#f19a72', '#db5e7c', '#f4c6c0', '#89aecd'],
+    topics: ['Healthy vision', 'Eye care tips', 'See clearly'],
   },
   {
     handle: '@dr.priyanka.gynae',
@@ -30,7 +30,7 @@ const INSTAGRAM_PROFILES = [
     postCount: '246',
     reach: '374K',
     href: 'https://www.instagram.com/dr.priyanka.gynae?cnvx=MWlsbnExM3gzY3FsNQ==',
-    posts: ['#f2b329', '#ea6897', '#9e5bd3', '#e9f1f0', '#d72d3e', '#c8a176'],
+    topics: ['Women’s wellness', 'Expert advice', 'Every stage'],
   },
     {
     handle: '@jigyasa_hospital',
@@ -44,7 +44,7 @@ const INSTAGRAM_PROFILES = [
     postCount: '372',
     reach: '86K',
     href: 'https://www.instagram.com/jigyasa_hospital?knvt=MzVrN3htcGFqOGto',
-    posts: ['#92c6c6', '#4d8b8c', '#e1efef', '#5c7f80', '#bddbd6', '#266b72'],
+    topics: ['Care that matters', 'Health tips', 'Here for you'],
   },
 ];
 
@@ -75,8 +75,8 @@ export default function InstagramProfileShowcase() {
           </div>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-[.9fr_1.35fr] lg:gap-6">
-          <div className="flex flex-col gap-2 rounded-2xl border border-border bg-cardBg p-2 sm:p-3">
+        <div className="grid min-w-0 grid-cols-1 gap-4 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.35fr)] lg:gap-6">
+          <div className="flex min-w-0 flex-col gap-2 rounded-2xl border border-border bg-cardBg p-2 sm:p-3">
             {INSTAGRAM_PROFILES.map((profile, index) => (
               <a key={profile.handle} href={profile.href} target="_blank" rel="noreferrer" onMouseEnter={() => setActive(index)} onFocus={() => setActive(index)} className={`group flex items-center gap-3 rounded-xl p-3 text-left transition-all duration-300 ${active === index ? 'bg-background shadow-sm ring-1 ring-[#8356FB]/50' : 'hover:bg-background/70'}`} aria-label={`Open ${profile.name} on Instagram`}>
                 <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br ${profile.accent} p-[2px]`}><span className="grid h-full w-full place-items-center rounded-full bg-cardBg text-xs font-black text-textHeading">{profile.initials}</span></span>
@@ -87,25 +87,32 @@ export default function InstagramProfileShowcase() {
             <p className="px-3 pb-2 pt-1 text-[11px] leading-relaxed text-textDescription font-bodyfont">Tap a profile to preview the campaign identity.</p>
           </div>
 
-          <div className="relative min-h-[410px] overflow-hidden rounded-2xl border border-border bg-[#0d0b14] p-4 sm:p-6">
+          <div className="relative min-w-0 overflow-hidden rounded-2xl border border-border bg-[#0d0b14] p-4 pb-10 sm:p-6 sm:pb-10">
             <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[#8356FB]/30 blur-3xl" />
             <div className="absolute -bottom-24 left-1/3 h-56 w-56 rounded-full bg-pink-500/20 blur-3xl" />
-            <div className="relative mx-auto flex max-w-[500px] items-center justify-center">
+            <div className="relative mx-auto grid w-full max-w-[340px]">
               {INSTAGRAM_PROFILES.map((profile, index) => {
                 const isActive = active === index;
                 return (
-                  <a key={profile.handle} href={profile.href} target="_blank" rel="noreferrer" aria-label={`Open ${profile.name} on Instagram`} className={`absolute w-[min(100%,340px)] cursor-pointer rounded-[1.8rem] border border-white/15 bg-[#16131f]/95 p-3 text-white shadow-2xl transition-all duration-700 hover:border-white/40 ${isActive ? 'translate-x-0 translate-y-0 scale-100 opacity-100 z-20' : index < active ? '-translate-x-20 translate-y-6 scale-90 opacity-0 z-0 pointer-events-none' : 'translate-x-20 translate-y-6 scale-90 opacity-0 z-0 pointer-events-none'}`}>
+                  <a key={profile.handle} href={profile.href} target="_blank" rel="noreferrer" aria-label={`Open ${profile.name} on Instagram`} tabIndex={isActive ? 0 : -1} className={`col-start-1 row-start-1 min-w-0 w-full cursor-pointer rounded-[1.8rem] border border-white/15 bg-[#16131f]/95 p-3 text-white shadow-2xl transition-all duration-700 hover:border-white/40 ${isActive ? 'translate-x-0 scale-100 opacity-100 z-20' : index < active ? '-translate-x-8 scale-95 opacity-0 z-0 pointer-events-none' : 'translate-x-8 scale-95 opacity-0 z-0 pointer-events-none'}`}>
                     <div className="flex items-center justify-between border-b border-white/10 pb-3">
                       <div className="flex items-center gap-2.5"><span className={`grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br ${profile.accent} p-[2px]`}><span className="grid h-full w-full place-items-center rounded-full bg-[#16131f] text-[10px] font-black">{profile.initials}</span></span><div><p className="text-sm font-bold">{profile.name}</p><p className="text-[11px] text-white/55">{profile.handle}</p></div></div>
                       <InstagramIcon className="h-5 w-5 text-white/80" />
                     </div>
                     <div className="grid grid-cols-3 gap-2 py-3 text-center"><div><p className="text-sm font-bold">{profile.postCount}</p><p className="text-[10px] text-white/50">posts</p></div><div><p className="text-sm font-bold">{profile.followers}</p><p className="text-[10px] text-white/50">followers</p></div><div><p className="text-sm font-bold text-[#bda6ff]">{profile.growth}</p><p className="text-[10px] text-white/50">growth</p></div></div>
-                    <div className="grid grid-cols-3 gap-1.5">{profile.posts.map((color, postIndex) => <div key={postIndex} className="aspect-square overflow-hidden rounded-md" style={{ background: `linear-gradient(135deg, ${color}, #241d31)` }}><div className="h-full w-full bg-[radial-gradient(circle_at_70%_28%,rgba(255,255,255,.42),transparent_22%),linear-gradient(35deg,transparent_45%,rgba(255,255,255,.12)_46%,transparent_58%)]" /></div>)}</div>
+                    <div aria-hidden="true" className="relative flex h-40 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-[#100d1b] sm:h-44">
+                      <div className={`absolute h-32 w-32 rounded-full bg-gradient-to-br ${profile.accent} opacity-30 blur-3xl animate-pulse`} />
+                      <div className="absolute h-32 w-32 rounded-full border border-white/10" />
+                      <div className="absolute h-24 w-24 rounded-full border border-white/15" />
+                      <div className={`relative grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br ${profile.accent} shadow-[0_0_35px_rgba(131,86,251,0.3)]`}><InstagramIcon className="h-8 w-8 text-white" /></div>
+                      <div className="absolute left-[15%] top-[22%] flex h-9 w-9 items-center justify-center rounded-xl border border-white/15 bg-[#252031] text-pink-400 animate-bounce" style={{ animationDuration: '3s' }}><span className="text-lg">♥</span></div>
+                      <div className="absolute right-[14%] top-[25%] flex h-9 w-9 items-center justify-center rounded-xl border border-white/15 bg-[#252031] text-violet-300 animate-bounce" style={{ animationDuration: '3.5s', animationDelay: '.4s' }}><svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 17l6-6 4 4 7-8"/><path d="M15 7h5v5"/></svg></div>
+                      <div className="absolute bottom-[17%] right-[23%] flex h-8 w-8 items-center justify-center rounded-xl border border-white/15 bg-[#252031] text-cyan-300 animate-pulse"><svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.9-5.5a9 9 0 0 1-.9-4 8.5 8.5 0 0 1 17 0Z"/></svg></div>
+                    </div>
                     <div className="mt-3 rounded-xl border border-white/10 bg-white/[.06] px-3 py-2"><p className="text-[10px] uppercase tracking-wider text-white/45">Campaign highlight</p><p className="mt-0.5 text-xs font-semibold">{profile.growth} {profile.growthLabel.toLowerCase()} this quarter</p></div>
                   </a>
                 );
               })}
-              <div className="h-[378px]" aria-hidden="true" />
             </div>
             <div className="absolute bottom-4 left-0 right-0 z-30 flex justify-center gap-1.5">{INSTAGRAM_PROFILES.map((profile, index) => <button key={profile.handle} aria-label={`Show ${profile.name}`} onClick={() => setActive(index)} className={`h-1.5 rounded-full transition-all ${active === index ? 'w-6 bg-white' : 'w-1.5 bg-white/35 hover:bg-white/70'}`} />)}</div>
           </div>

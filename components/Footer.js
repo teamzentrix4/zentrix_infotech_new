@@ -8,7 +8,7 @@ const linkClass = 'group inline-flex w-fit items-center gap-2 font-bodyfont text
 const socialLinks = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/zentrixinfotech', icon: 'linkedin' },
   { label: 'Instagram', href: 'https://www.instagram.com/zentrixinfotech/', icon: 'instagram' },
-  { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61572870601261', icon: 'facebook' },
+  { label: 'Facebook', href: 'https://www.facebook.com/zentrixinfotech.in/', icon: 'facebook' },
 ];
 
 function ContactIcon({ type }) {
